@@ -463,7 +463,7 @@ endif()
 if(NOT JPEG_FOUND)
   set(JPEGTURBO_TARGET_NAME turbojpeg)
   set(JPEGTURBO_PREFIX_DIR ${CMAKE_CURRENT_BINARY_DIR}/${JPEGTURBO_TARGET_NAME})
-  set(JPEGTURBO_SOURCE_DIR ${THIRD_PARTY_DIR}/${JPEGTURBO_TARGET_NAME})
+  set(JPEGTURBO_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../libjpeg-turbo)
   set(JPEGTURBO_BINARY_DIR ${JPEGTURBO_PREFIX_DIR}/src/${JPEGTURBO_TARGET_NAME}-build)
   set(JPEG_INCLUDE_DIRS ${JPEGTURBO_SOURCE_DIR}/src ${JPEGTURBO_BINARY_DIR})
   if(MSVC)
@@ -479,8 +479,8 @@ if(NOT JPEG_FOUND)
   set(JPEG_LIBRARIES ${JPEG_LIB_PREFIX}${JPEG_LIB})
   if(EMSCRIPTEN)
     ExternalProject_Add(${JPEGTURBO_TARGET_NAME}
-        GIT_REPOSITORY https://github.com/libjpeg-turbo/libjpeg-turbo.git
-        GIT_TAG 3.1.0
+        # GIT_REPOSITORY https://github.com/libjpeg-turbo/libjpeg-turbo.git
+        # GIT_TAG 3.0.1
         PREFIX ${JPEGTURBO_PREFIX_DIR}
         SOURCE_DIR ${JPEGTURBO_SOURCE_DIR}
         BINARY_DIR ${JPEGTURBO_BINARY_DIR}
@@ -492,8 +492,8 @@ if(NOT JPEG_FOUND)
     )
   else()
     ExternalProject_Add(${JPEGTURBO_TARGET_NAME}
-        GIT_REPOSITORY https://github.com/libjpeg-turbo/libjpeg-turbo.git
-        GIT_TAG 3.1.0
+        # GIT_REPOSITORY https://github.com/libjpeg-turbo/libjpeg-turbo.git
+        # GIT_TAG 3.0.1
         PREFIX ${JPEGTURBO_PREFIX_DIR}
         SOURCE_DIR ${JPEGTURBO_SOURCE_DIR}
         BINARY_DIR ${JPEGTURBO_BINARY_DIR}
